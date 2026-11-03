@@ -1,0 +1,46 @@
+{
+  "id": "H1",
+  "edificio": "html",
+  "lugar": "Edificio HTML · Piso 1 · Aula 1",
+  "titulo": "De div a semántica",
+  "contenido": "Regiones de la página y contenedores",
+  "ra": "RA-F1",
+  "complemento": false,
+  "teoria": "Las regiones header, nav, main, aside y footer dicen qué función cumple cada parte de la página. Un lector de pantalla las reconoce y permite saltar directamente a cada una; con div, hay que escuchar toda la página de principio a fin.",
+  "editable": "html",
+  "base": {
+    "html": "<div class=\"header\">\n  <h1>Facultad de Ingeniería</h1>\n</div>\n<div class=\"menu\">\n  <a href=\"#agenda\">Agenda</a>\n  <a href=\"#contacto\">Contacto</a>\n</div>\n<div class=\"contenido\">\n  <h2>Abren inscripciones a monitorías</h2>\n  <p>Hasta el viernes en la oficina 101.</p>\n</div>\n<div class=\"lateral\">\n  <p>Enlaces de interés</p>\n</div>\n<div class=\"pie\">\n  <p>Oficina 101, edificio de Ingeniería</p>\n</div>",
+    "css": "",
+    "js": ""
+  },
+  "criterios": [
+    {
+      "tipo": "existe",
+      "selector": "header",
+      "mensaje": "Falta el encabezado: header presenta el sitio, por ejemplo su título."
+    },
+    {
+      "tipo": "existe",
+      "selector": "nav",
+      "mensaje": "Falta la navegación: los enlaces para moverse por el sitio van en nav."
+    },
+    {
+      "tipo": "existe",
+      "selector": "main",
+      "mensaje": "Falta el contenido principal: va en main, y es único en la página."
+    },
+    {
+      "tipo": "existe",
+      "selector": "aside",
+      "mensaje": "Falta el contenido complementario: lo que acompaña al principal va en aside."
+    },
+    {
+      "tipo": "existe",
+      "selector": "footer",
+      "mensaje": "Falta el pie de página: footer cierra la página con datos como el contacto."
+    }
+  ],
+  "mensajes": {
+    "exito": "El lector de pantalla ya reconoce las cinco regiones: banner, navegación, contenido principal, complementario e información de contacto."
+  }
+}

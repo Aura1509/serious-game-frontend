@@ -1,0 +1,32 @@
+{
+  "name": "serious-game-frontend-univalle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Serious game Web 3D para apoyar el aprendizaje de la integración de HTML, CSS y JavaScript (trabajo de grado, Universidad del Valle).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.17.0",
+    "eslint": "9.17.0",
+    "globals": "15.14.0",
+    "jsdom": "25.0.1",
+    "prettier": "3.4.2",
+    "vite": "6.0.7",
+    "vitest": "2.1.8"
+  }
+}

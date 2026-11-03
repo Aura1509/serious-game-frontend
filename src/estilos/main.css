@@ -1,0 +1,114 @@
+/* Estilos provisionales de la interfaz 2D. Cumplen RNF-03 (contraste) y RNF-05 (foco visible). */
+:root {
+  --fondo: #f4f6f8;
+  --panel: #ffffff;
+  --texto: #1b1f24;
+  --suave: #56606c;
+  --borde: #d3d9df;
+  --acento: #b30f2a;
+  --ok: #1d7f53;
+  --error: #b4322a;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  height: 100vh;
+}
+.escena {
+  position: relative;
+  min-height: 0;
+}
+#lienzo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.panel {
+  background: var(--panel);
+  border-left: 1px solid var(--borde);
+  padding: 16px;
+  overflow: auto;
+}
+.lugar {
+  margin: 0;
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+.panel h1 {
+  font-size: 1.3rem;
+  margin: 4px 0 12px;
+}
+.teoria {
+  background: var(--fondo);
+  border-left: 4px solid var(--acento);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+.etiqueta {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+#editor {
+  width: 100%;
+  min-height: 220px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+}
+.acciones {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+button {
+  font: inherit;
+  padding: 6px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--panel);
+  cursor: pointer;
+}
+button:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #3e7bfa;
+  outline-offset: 2px;
+}
+.retroalimentacion p {
+  margin: 4px 0;
+}
+.retroalimentacion .ok {
+  color: var(--ok);
+}
+.retroalimentacion .error {
+  color: var(--error);
+}
+#vista-previa {
+  width: 100%;
+  height: 260px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: #fff;
+}
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55vh auto;
+    height: auto;
+  }
+}

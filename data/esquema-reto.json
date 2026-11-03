@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reto del serious game",
+  "description": "Estructura de cada archivo de data/retos/<edificio>/<ID>.json (ver docs/como-agregar-un-reto.md).",
+  "type": "object",
+  "required": ["id", "edificio", "lugar", "titulo", "ra", "teoria", "base", "editable", "criterios"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador de la matriz de retos (Tabla 12), por ejemplo H1 o CF."
+    },
+    "edificio": { "enum": ["html", "css", "js", "ia", "cupula"] },
+    "lugar": { "type": "string" },
+    "titulo": { "type": "string" },
+    "contenido": { "type": "string", "description": "Contenido de la Tabla 5 que trabaja el reto." },
+    "ra": { "type": "string", "pattern": "^RA-F[1-5]" },
+    "complemento": { "type": "boolean" },
+    "teoria": { "type": "string", "description": "Explicación previa del robot (RP-07)." },
+    "editable": { "enum": ["html", "css", "js"], "description": "Capa que el estudiante modifica." },
+    "base": {
+      "type": "object",
+      "description": "Estructura base que entrega el juego (RP-08).",
+      "properties": { "html": { "type": "string" }, "css": { "type": "string" }, "js": { "type": "string" } }
+    },
+    "criterios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["tipo", "mensaje"],
+        "properties": {
+          "tipo": { "enum": ["existe", "no-existe", "cantidad", "texto", "estilo"] },
+          "selector": { "type": "string" },
+          "valor": {},
+          "contiene": { "type": "string" },
+          "propiedad": { "type": "string" },
+          "mensaje": {
+            "type": "string",
+            "description": "Retroalimentación si el criterio no se cumple (RF-04)."
+          }
+        }
+      }
+    },
+    "variantes": { "type": "array", "description": "Banco de variantes de dificultad equivalente (RF-08)." },
+    "mensajes": { "type": "object", "properties": { "exito": { "type": "string" } } }
+  }
+}

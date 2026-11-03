@@ -1,0 +1,8 @@
+# Normaliza los finales de línea
+* text=auto eol=lf
+
+# Archivos binarios grandes con Git LFS (modelado 3D)
+*.glb   filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.png   binary
+*.jpg   binary
