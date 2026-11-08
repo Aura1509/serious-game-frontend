@@ -54,11 +54,27 @@ body {
   font-size: 1.3rem;
   margin: 4px 0 12px;
 }
+#parte-reto:empty {
+  display: none;
+}
+.subtitulo {
+  font-size: 0.95rem;
+  margin: 12px 0 4px;
+}
 .teoria {
   background: var(--fondo);
   border-left: 4px solid var(--acento);
   padding: 8px 12px;
   margin-bottom: 12px;
+}
+.consigna {
+  border-left: 4px solid var(--texto);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+.teoria p,
+.consigna p {
+  margin: 0;
 }
 .etiqueta {
   display: block;

@@ -13,12 +13,17 @@ export function crearPanel(doc) {
     mostrarReto(reto) {
       $('lugar-reto').textContent = reto.lugar;
       $('titulo-reto').textContent = `${reto.id} · ${reto.titulo}`;
-      $('teoria').replaceChildren(parrafo(reto.teoria));
       $('editor').value = reto.base[reto.editable];
       $('retroalimentacion').replaceChildren();
     },
+    mostrarParte(reto, indice) {
+      const { teoria, consigna } = reto.partes[indice];
+      const total = reto.partes.length;
+      $('parte-reto').textContent = total > 1 ? `Parte ${indice + 1} de ${total}` : '';
+      $('teoria').replaceChildren(parrafo(teoria));
+      $('consigna').replaceChildren(parrafo(consigna));
+    },
     obtenerCodigo: () => $('editor').value,
-    ponerCodigo: (codigo) => ($('editor').value = codigo),
     mostrarResultado({ aprobado, mensajes }) {
       $('retroalimentacion').replaceChildren(
         ...mensajes.map((m) => parrafo(`${aprobado ? '✓' : '✗'} ${m}`, aprobado ? 'ok' : 'error')),
@@ -26,5 +31,6 @@ export function crearPanel(doc) {
     },
     alEjecutar: (fn) => $('ejecutar').addEventListener('click', fn),
     alReiniciar: (fn) => $('reiniciar').addEventListener('click', fn),
+    alEscribir: (fn) => $('editor').addEventListener('input', fn),
   };
 }

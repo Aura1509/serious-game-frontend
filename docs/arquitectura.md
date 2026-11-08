@@ -15,8 +15,8 @@ El prototipo es una aplicación web estática: corre completa en el navegador, s
 
 ## Flujo de un reto
 
-1. El controlador toma el reto del banco y el panel muestra la teoría, las instrucciones y la estructura base.
+1. El controlador toma el reto del banco y el panel muestra la teoría, la consigna y la estructura base. La vista previa muestra la cartelera y se actualiza mientras el estudiante escribe HTML o CSS.
 2. El estudiante edita el código y pulsa «Ejecutar».
 3. La ejecución aislada arma la página con la base y el código del estudiante.
-4. El evaluador revisa los criterios del reto sobre esa página.
-5. La retroalimentación explica lo que falta; si el reto se supera, se guarda el progreso y la escena reacciona.
+4. El evaluador revisa sobre esa página los criterios de la parte actual y de las anteriores.
+5. La retroalimentación explica lo que falta, con un mensaje por grupo de criterios. Si la parte se supera, el panel muestra la siguiente; al superar la última, se guarda el progreso y la escena reacciona.

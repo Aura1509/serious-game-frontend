@@ -1,22 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { evaluar } from '../src/evaluador/plantillas.js';
-import { cargarBanco } from '../src/retos/banco.js';
+import { evaluar, validarCriterio } from '../src/evaluador/plantillas.js';
 
 const documentoCon = (html) =>
   new DOMParser().parseFromString(`<!doctype html><html><body>${html}</body></html>`, 'text/html');
-const h1 = cargarBanco().get('H1');
 
 describe('evaluador por plantillas', () => {
-  it('no aprueba la estructura base hecha con div', () => {
-    const { aprobado, resultados } = evaluar(documentoCon(h1.base.html), h1.criterios, window);
-    expect(aprobado).toBe(false);
-    expect(resultados.filter((r) => !r.cumple)).toHaveLength(5);
-  });
-
-  it('aprueba cualquier solución con las cinco regiones', () => {
-    const html =
-      '<header><h1>Facultad</h1></header><nav><a href="#a">A</a></nav><main><p>Hola</p></main><aside></aside><footer></footer>';
-    expect(evaluar(documentoCon(html), h1.criterios, window).aprobado).toBe(true);
+  it('comprueba que un elemento exista o no exista', () => {
+    const existe = { tipo: 'existe', selector: 'nav a', mensaje: '' };
+    const noExiste = { tipo: 'no-existe', selector: 'section > a', mensaje: '' };
+    expect(evaluar(documentoCon('<nav><a href="#a">A</a></nav>'), [existe, noExiste]).aprobado).toBe(true);
+    expect(evaluar(documentoCon('<section><a href="#a">A</a></section>'), [noExiste]).aprobado).toBe(false);
   });
 
   it('comprueba estilos calculados', () => {
@@ -29,5 +22,28 @@ describe('evaluador por plantillas', () => {
       mensaje: '',
     };
     expect(evaluar(document, [criterio], window).aprobado).toBe(true);
+  });
+
+  it('comprueba en qué contenedor quedó un bloque', () => {
+    const criterio = {
+      tipo: 'contenedor',
+      selector: 'h2',
+      contiene: 'Noticia',
+      etiqueta: 'article',
+      mensaje: '',
+    };
+    const aprueba = (html) => evaluar(documentoCon(html), [criterio]).aprobado;
+    expect(aprueba('<main><article><header><h2>Noticia</h2></header></article></main>')).toBe(true);
+    expect(aprueba('<main><section><h2>Noticia</h2></section></main>')).toBe(false);
+    expect(aprueba('<main><article><h2>Otra</h2></article></main>')).toBe(false);
+  });
+
+  it('detecta criterios mal declarados', () => {
+    expect(validarCriterio({ tipo: 'existe', selector: 'nav', mensaje: 'Falta nav.' })).toBeNull();
+    expect(validarCriterio({ tipo: 'contenedor', selector: 'h2', mensaje: 'x' })).toMatch(
+      /contiene, etiqueta/,
+    );
+    expect(validarCriterio({ tipo: 'existe', selector: 'nav' })).toMatch(/no tiene mensaje/);
+    expect(validarCriterio({ tipo: 'inventado', mensaje: 'x' })).toMatch(/desconocido/);
   });
 });
