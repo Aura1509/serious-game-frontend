@@ -1,6 +1,6 @@
 # 0001. Vite y three.js como base del prototipo
 
-- **Estado:** aceptada
+- **Estado:** reemplazada en parte por [0004](0004-react-y-react-three-fiber.md)
 - **Fecha:** 2026-11-03
 
 ## Contexto
