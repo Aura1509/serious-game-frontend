@@ -11,7 +11,7 @@ La decisión 0001 fijó three.js con JavaScript estándar en módulos y pidió r
 ## Decisión
 
 - La interfaz 2D se construye con React.
-- La escena 3D se construye con React Three Fiber sobre three.js 0.170 y WebGL (RT-01).
+- La escena 3D se construye con React Three Fiber y drei sobre three.js 0.187 y WebGL (RT-01). three.js sube desde 0.170 para coincidir con las versiones de React Three Fiber, drei y las skills del proyecto.
 - Se mantienen JavaScript, Vite, Vitest, ESLint, Prettier y la publicación en GitHub Pages.
 - Se conservan los módulos que no dependen de la interfaz: banco de retos, ejecución aislada, evaluador, retroalimentación y progreso.
 

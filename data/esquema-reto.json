@@ -61,7 +61,18 @@
               }
             }
           },
-          "exito": { "type": "string", "description": "Mensaje al superar la parte." }
+          "exito": { "type": "string", "description": "Mensaje al superar la parte." },
+          "ejemplo": {
+            "type": "object",
+            "description": "Ejemplo animado de la teoría (RP-07): el robot muestra el código antes y después.",
+            "required": ["antes", "despues"],
+            "properties": { "antes": { "type": "string" }, "despues": { "type": "string" } }
+          },
+          "pistas": {
+            "type": "array",
+            "description": "Pistas del robot, de la más general a la respuesta exacta. Se desbloquea una por intento (RL-06).",
+            "items": { "type": "string" }
+          }
         }
       }
     },

@@ -95,6 +95,15 @@
           "mensaje": "Los datos de contacto cierran la página, van dentro de footer."
         }
       ],
+      "ejemplo": {
+        "antes": "<div class=\"menu\">…</div>",
+        "despues": "<nav>…</nav>"
+      },
+      "pistas": [
+        "Cada div tiene una clase que dice qué región es. Busca las clases header, nav, main, aside y footer.",
+        "Cambia la etiqueta de apertura y también la de cierre: <div class=\"nav\"> pasa a <nav>, y su </div> pasa a </nav>.",
+        "Deben quedar header, nav, main, aside y footer, cada uno con el contenido que tenía su div. Por ejemplo: <footer id=\"contacto\"> … </footer>."
+      ],
       "exito": "El lector de pantalla ya reconoce las cinco regiones: banner, navegación, contenido principal, complementario e información de contacto."
     },
     {
@@ -122,6 +131,15 @@
           "etiqueta": "div",
           "mensaje": "Una fila de botones solo acomoda elementos, usa div."
         }
+      ],
+      "ejemplo": {
+        "antes": "<div class=\"receta\">…</div>",
+        "despues": "<article class=\"receta\">…</article>"
+      },
+      "pistas": [
+        "Pregúntate si cada bloque se entiende solo, si agrupa un tema con su título o si solo acomoda elementos.",
+        "La noticia podría publicarse aparte, la agenda es un tema con título y la fila de botones solo los acomoda.",
+        "Usa <article class=\"noticia\"> para la noticia y <section class=\"agenda\"> para la agenda, con sus cierres, y deja <div class=\"botones\"> como está."
       ],
       "exito": "La noticia quedó en article, la agenda en section y los botones en div. Ahora cada contenedor expresa el significado de su contenido."
     }
