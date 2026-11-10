@@ -6,41 +6,127 @@
   "contenido": "Regiones de la página y contenedores",
   "ra": "RA-F1",
   "complemento": false,
-  "teoria": "Las regiones header, nav, main, aside y footer dicen qué función cumple cada parte de la página. Un lector de pantalla las reconoce y permite saltar directamente a cada una; con div, hay que escuchar toda la página de principio a fin.",
   "editable": "html",
   "base": {
-    "html": "<div class=\"header\">\n  <h1>Facultad de Ingeniería</h1>\n</div>\n<div class=\"menu\">\n  <a href=\"#agenda\">Agenda</a>\n  <a href=\"#contacto\">Contacto</a>\n</div>\n<div class=\"contenido\">\n  <h2>Abren inscripciones a monitorías</h2>\n  <p>Hasta el viernes en la oficina 101.</p>\n</div>\n<div class=\"lateral\">\n  <p>Enlaces de interés</p>\n</div>\n<div class=\"pie\">\n  <p>Oficina 101, edificio de Ingeniería</p>\n</div>",
+    "html": "<div class=\"header\">\n  <h1>Cartelera de la Facultad de Ingeniería</h1>\n  <p>Escuela de Ingeniería de Sistemas y Computación</p>\n</div>\n<div class=\"nav\">\n  <a href=\"#noticia\">Noticias</a>\n  <a href=\"#agenda\">Agenda</a>\n  <a href=\"#contacto\">Contacto</a>\n</div>\n<div class=\"main\">\n  <div class=\"noticia\" id=\"noticia\">\n    <h2>Abren inscripciones a monitorías</h2>\n    <p>Las monitorías de desarrollo web empiezan el lunes en la sala de cómputo 2. Los cupos son limitados.</p>\n    <div class=\"botones\">\n      <button type=\"button\">Reservar</button>\n      <button type=\"button\">Cancelar</button>\n    </div>\n  </div>\n  <div class=\"agenda\" id=\"agenda\">\n    <h2>Agenda de la semana</h2>\n    <ul>\n      <li>Martes: charla sobre accesibilidad web</li>\n      <li class=\"agotado\">Miércoles: taller de JavaScript</li>\n      <li>Viernes: feria de proyectos integradores</li>\n    </ul>\n  </div>\n</div>\n<div class=\"aside\">\n  <h2>Recuerda</h2>\n  <p>La biblioteca abre de lunes a sábado.</p>\n</div>\n<div class=\"footer\" id=\"contacto\">\n  <p>Contacto: oficina 101, edificio de Ingeniería.</p>\n</div>",
     "css": "",
     "js": ""
   },
-  "criterios": [
+  "partes": [
     {
-      "tipo": "existe",
-      "selector": "header",
-      "mensaje": "Falta el encabezado: header presenta el sitio, por ejemplo su título."
+      "teoria": "Las regiones dicen qué función cumple cada parte de la página: header la presenta, nav reúne los enlaces para moverse por el sitio, main guarda el contenido principal y es único, aside lo complementa y footer la cierra con datos como el contacto. Un lector de pantalla reconoce estas regiones y permite saltar directamente a cada una. Con div, en cambio, hay que escuchar toda la página de principio a fin.",
+      "consigna": "La cartelera está armada solo con div. Cambia los div de las cinco regiones por header, nav, main, aside y footer, según la función de cada uno. Conserva el contenido dentro de su región y pulsa Ejecutar.",
+      "criterios": [
+        {
+          "tipo": "existe",
+          "selector": "header",
+          "grupo": "header",
+          "mensaje": "Falta el encabezado: header presenta el sitio, por ejemplo su título."
+        },
+        {
+          "tipo": "existe",
+          "selector": "header h1",
+          "grupo": "header",
+          "mensaje": "El título de la cartelera va dentro de header, porque es lo que presenta el sitio."
+        },
+        {
+          "tipo": "no-existe",
+          "selector": "section > a",
+          "grupo": "nav",
+          "mensaje": "section agrupa un tema. Los enlaces para moverse por el sitio van en nav para que las herramientas de asistencia los reconozcan."
+        },
+        {
+          "tipo": "existe",
+          "selector": "nav",
+          "grupo": "nav",
+          "mensaje": "Falta la navegación: los enlaces para moverse por el sitio van en nav."
+        },
+        {
+          "tipo": "cantidad",
+          "selector": "nav a",
+          "valor": 3,
+          "grupo": "nav",
+          "mensaje": "Los tres enlaces del menú van dentro de nav."
+        },
+        {
+          "tipo": "existe",
+          "selector": "main",
+          "grupo": "main",
+          "mensaje": "Falta el contenido principal: va en main, y es único en la página."
+        },
+        {
+          "tipo": "texto",
+          "selector": "main",
+          "contiene": "Abren inscripciones a monitorías",
+          "grupo": "main",
+          "mensaje": "La noticia y la agenda son el contenido principal, van dentro de main."
+        },
+        {
+          "tipo": "texto",
+          "selector": "main",
+          "contiene": "Agenda de la semana",
+          "grupo": "main",
+          "mensaje": "La noticia y la agenda son el contenido principal, van dentro de main."
+        },
+        {
+          "tipo": "existe",
+          "selector": "aside",
+          "grupo": "aside",
+          "mensaje": "Falta el contenido complementario: lo que acompaña al principal va en aside."
+        },
+        {
+          "tipo": "texto",
+          "selector": "aside",
+          "contiene": "Recuerda",
+          "grupo": "aside",
+          "mensaje": "El recordatorio complementa la página, va dentro de aside."
+        },
+        {
+          "tipo": "existe",
+          "selector": "footer",
+          "grupo": "footer",
+          "mensaje": "Falta el pie de página: footer cierra la página con datos como el contacto."
+        },
+        {
+          "tipo": "texto",
+          "selector": "footer",
+          "contiene": "Contacto",
+          "grupo": "footer",
+          "mensaje": "Los datos de contacto cierran la página, van dentro de footer."
+        }
+      ],
+      "exito": "El lector de pantalla ya reconoce las cinco regiones: banner, navegación, contenido principal, complementario e información de contacto."
     },
     {
-      "tipo": "existe",
-      "selector": "nav",
-      "mensaje": "Falta la navegación: los enlaces para moverse por el sitio van en nav."
-    },
-    {
-      "tipo": "existe",
-      "selector": "main",
-      "mensaje": "Falta el contenido principal: va en main, y es único en la página."
-    },
-    {
-      "tipo": "existe",
-      "selector": "aside",
-      "mensaje": "Falta el contenido complementario: lo que acompaña al principal va en aside."
-    },
-    {
-      "tipo": "existe",
-      "selector": "footer",
-      "mensaje": "Falta el pie de página: footer cierra la página con datos como el contacto."
+      "teoria": "Dentro de main, cada bloque necesita el contenedor que expresa su significado. article es algo que se entiende solo y podría publicarse aparte, como una noticia. section agrupa un tema con su título, como la agenda. div solo agrupa o acomoda, sin significado, como una fila de botones.",
+      "consigna": "Ahora revisa los tres bloques que hay dentro de main: la noticia, la agenda y la fila de botones. Decide qué contenedor necesita cada uno entre article, section y div, y cambia la etiqueta si hace falta. Luego pulsa Ejecutar.",
+      "criterios": [
+        {
+          "tipo": "contenedor",
+          "selector": "h2",
+          "contiene": "Abren inscripciones a monitorías",
+          "etiqueta": "article",
+          "mensaje": "Una noticia se entiende sola fuera de la página, va en article."
+        },
+        {
+          "tipo": "contenedor",
+          "selector": "h2",
+          "contiene": "Agenda de la semana",
+          "etiqueta": "section",
+          "mensaje": "La agenda agrupa un tema con su título, va en section."
+        },
+        {
+          "tipo": "contenedor",
+          "selector": "button",
+          "contiene": "Reservar",
+          "etiqueta": "div",
+          "mensaje": "Una fila de botones solo acomoda elementos, usa div."
+        }
+      ],
+      "exito": "La noticia quedó en article, la agenda en section y los botones en div. Ahora cada contenedor expresa el significado de su contenido."
     }
   ],
-  "mensajes": {
-    "exito": "El lector de pantalla ya reconoce las cinco regiones: banner, navegación, contenido principal, complementario e información de contacto."
+  "solucion": {
+    "html": "<header>\n  <h1>Cartelera de la Facultad de Ingeniería</h1>\n  <p>Escuela de Ingeniería de Sistemas y Computación</p>\n</header>\n<nav>\n  <a href=\"#noticia\">Noticias</a>\n  <a href=\"#agenda\">Agenda</a>\n  <a href=\"#contacto\">Contacto</a>\n</nav>\n<main>\n  <article class=\"noticia\" id=\"noticia\">\n    <h2>Abren inscripciones a monitorías</h2>\n    <p>Las monitorías de desarrollo web empiezan el lunes en la sala de cómputo 2. Los cupos son limitados.</p>\n    <div class=\"botones\">\n      <button type=\"button\">Reservar</button>\n      <button type=\"button\">Cancelar</button>\n    </div>\n  </article>\n  <section class=\"agenda\" id=\"agenda\">\n    <h2>Agenda de la semana</h2>\n    <ul>\n      <li>Martes: charla sobre accesibilidad web</li>\n      <li class=\"agotado\">Miércoles: taller de JavaScript</li>\n      <li>Viernes: feria de proyectos integradores</li>\n    </ul>\n  </section>\n</main>\n<aside>\n  <h2>Recuerda</h2>\n  <p>La biblioteca abre de lunes a sábado.</p>\n</aside>\n<footer id=\"contacto\">\n  <p>Contacto: oficina 101, edificio de Ingeniería.</p>\n</footer>"
   }
 }

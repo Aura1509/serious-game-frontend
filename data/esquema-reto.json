@@ -3,7 +3,7 @@
   "title": "Reto del serious game",
   "description": "Estructura de cada archivo de data/retos/<edificio>/<ID>.json (ver docs/como-agregar-un-reto.md).",
   "type": "object",
-  "required": ["id", "edificio", "lugar", "titulo", "ra", "teoria", "base", "editable", "criterios"],
+  "required": ["id", "edificio", "lugar", "titulo", "ra", "base", "editable", "partes"],
   "properties": {
     "id": {
       "type": "string",
@@ -15,33 +15,61 @@
     "contenido": { "type": "string", "description": "Contenido de la Tabla 5 que trabaja el reto." },
     "ra": { "type": "string", "pattern": "^RA-F[1-5]" },
     "complemento": { "type": "boolean" },
-    "teoria": { "type": "string", "description": "Explicación previa del robot (RP-07)." },
     "editable": { "enum": ["html", "css", "js"], "description": "Capa que el estudiante modifica." },
     "base": {
       "type": "object",
       "description": "Estructura base que entrega el juego (RP-08).",
       "properties": { "html": { "type": "string" }, "css": { "type": "string" }, "js": { "type": "string" } }
     },
-    "criterios": {
+    "partes": {
       "type": "array",
       "minItems": 1,
+      "description": "Pasos del reto en orden. Al superar una parte se muestra la siguiente.",
       "items": {
         "type": "object",
-        "required": ["tipo", "mensaje"],
+        "required": ["teoria", "consigna", "criterios"],
         "properties": {
-          "tipo": { "enum": ["existe", "no-existe", "cantidad", "texto", "estilo"] },
-          "selector": { "type": "string" },
-          "valor": {},
-          "contiene": { "type": "string" },
-          "propiedad": { "type": "string" },
-          "mensaje": {
+          "teoria": { "type": "string", "description": "Explicación previa del robot (RP-07)." },
+          "consigna": {
             "type": "string",
-            "description": "Retroalimentación si el criterio no se cumple (RF-04)."
-          }
+            "description": "Lo que debe hacer el estudiante, en cinco oraciones o menos (RF-05, RNF-06)."
+          },
+          "criterios": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["tipo", "mensaje"],
+              "properties": {
+                "tipo": { "enum": ["existe", "no-existe", "cantidad", "texto", "estilo", "contenedor"] },
+                "selector": { "type": "string" },
+                "valor": {},
+                "contiene": { "type": "string" },
+                "propiedad": { "type": "string" },
+                "etiqueta": {
+                  "enum": ["article", "section", "div"],
+                  "description": "Contenedor esperado en el tipo contenedor."
+                },
+                "grupo": {
+                  "type": "string",
+                  "description": "Los criterios de un mismo grupo se revisan en orden y solo se muestra el mensaje del primero que falla."
+                },
+                "mensaje": {
+                  "type": "string",
+                  "description": "Retroalimentación si el criterio no se cumple (RF-04)."
+                }
+              }
+            }
+          },
+          "exito": { "type": "string", "description": "Mensaje al superar la parte." }
         }
       }
     },
-    "variantes": { "type": "array", "description": "Banco de variantes de dificultad equivalente (RF-08)." },
-    "mensajes": { "type": "object", "properties": { "exito": { "type": "string" } } }
+    "solucion": {
+      "type": "object",
+      "description": "Solución esperada. Las pruebas comprueban que supera todas las partes.",
+      "properties": { "html": { "type": "string" }, "css": { "type": "string" }, "js": { "type": "string" } }
+    },
+    "variantes": { "type": "array", "description": "Banco de variantes de dificultad equivalente (RF-08)." }
   }
 }

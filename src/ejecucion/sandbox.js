@@ -23,10 +23,16 @@ export function ejecutarEnSandbox(iframe, codigo) {
     const temporizador = setTimeout(() => reject(new Error('La ejecución tardó demasiado.')), LIMITE_MS);
     iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
     iframe.onload = () => {
+      iframe.onload = null;
       clearTimeout(temporizador);
       const ventana = iframe.contentWindow;
       resolve({ documento: iframe.contentDocument, ventana, errores: ventana.__errores ?? [] });
     };
     iframe.srcdoc = construirDocumento(codigo);
   });
+}
+
+export function mostrarVistaPrevia(iframe, { html = '', css = '' }) {
+  iframe.setAttribute('sandbox', '');
+  iframe.srcdoc = construirDocumento({ html, css });
 }
