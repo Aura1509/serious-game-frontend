@@ -4,31 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Serious game Web 3D · Universidad del Valle</title>
-    <link rel="stylesheet" href="./src/estilos/main.css" />
   </head>
   <body>
-    <main class="app">
-      <section class="escena" aria-label="Campus en 3D">
-        <canvas id="lienzo"></canvas>
-      </section>
-      <aside class="panel" aria-labelledby="titulo-reto">
-        <p class="lugar" id="lugar-reto"></p>
-        <h1 id="titulo-reto">Cargando reto…</h1>
-        <p class="lugar" id="parte-reto"></p>
-        <h2 class="subtitulo">Teoría</h2>
-        <div id="teoria" class="teoria"></div>
-        <h2 class="subtitulo">Qué debes hacer</h2>
-        <div id="consigna" class="consigna"></div>
-        <label for="editor" class="etiqueta">Código</label>
-        <textarea id="editor" spellcheck="false"></textarea>
-        <div class="acciones">
-          <button id="ejecutar" type="button">Ejecutar</button>
-          <button id="reiniciar" type="button">Reiniciar</button>
-        </div>
-        <div id="retroalimentacion" class="retroalimentacion" aria-live="polite"></div>
-        <iframe id="vista-previa" title="Vista previa de la cartelera"></iframe>
-      </aside>
-    </main>
-    <script type="module" src="./src/main.js"></script>
+    <div id="raiz"></div>
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
