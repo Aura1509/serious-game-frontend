@@ -17,6 +17,16 @@ function validarParte(parte) {
     const error = validarCriterio(criterio);
     if (error) return error;
   }
+  if (
+    parte.pistas !== undefined &&
+    !(Array.isArray(parte.pistas) && parte.pistas.every((pista) => typeof pista === 'string'))
+  )
+    return 'las pistas deben ser una lista de textos';
+  if (
+    parte.ejemplo !== undefined &&
+    !(typeof parte.ejemplo.antes === 'string' && typeof parte.ejemplo.despues === 'string')
+  )
+    return 'el ejemplo necesita antes y despues';
   return null;
 }
 

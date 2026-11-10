@@ -6,6 +6,8 @@
    - `editable`: la capa que modifica el estudiante.
    - `partes`: los pasos del reto, en orden. Cada parte tiene su `teoria` (explicación previa del robot, RP-07), su `consigna` (lo que debe hacer el estudiante, en cinco oraciones o menos, RF-05 y RNF-06), sus `criterios` y un mensaje de `exito` opcional. Al superar una parte se muestra la siguiente, y se siguen revisando los criterios de las anteriores.
    - `criterios`: lo que debe cumplirse, cada uno con su `mensaje` de retroalimentación.
+   - `ejemplo` (opcional): código `antes` y `despues` que el robot anima al final de la teoría (RP-07). Conviene que no sea la respuesta del reto.
+   - `pistas` (opcional): pistas de la parte, de la más general a la respuesta exacta. Se desbloquea una por intento.
    - `solucion`: la solución esperada. La prueba del banco comprueba que la base no supera la primera parte y que la solución supera todas.
 3. Tipos de criterio disponibles:
 
