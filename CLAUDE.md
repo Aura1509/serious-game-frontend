@@ -4,8 +4,11 @@ Serious game Web 3D del trabajo de grado de la Escuela de Ingeniería de Sistema
 
 ## Stack
 
-- React para la interfaz y React Three Fiber para la escena 3D, con JavaScript (decisión 0004 en `docs/decisiones/`). El código actual todavía es JavaScript sin frameworks y falta migrarlo. El documento de grado (RT-02, Tabla 16, apartados 4.5 y B.13) aún describe el stack sin frameworks.
-- three.js 0.170 sobre WebGL (RT-01).
+- React 19 para la interfaz y React Three Fiber 9 con drei 10 para la escena 3D, con JavaScript (decisión 0004 en `docs/decisiones/`). El documento de grado (RT-02, Tabla 16, apartados 4.5 y B.13) todavía describe el stack sin frameworks.
+- three.js 0.187 sobre WebGL (RT-01). Colisiones con three-mesh-bvh. Postprocesado con `@react-three/postprocessing` (N8AO, Bloom, SMAA y ToneMapping) (decisión 0005).
+- Texturas CC0 en `public/texturas/`. Personajes low-poly de Quaternius (CC0, 2022) y animaciones de Rocketbox (MIT) en `public/models/personas/`; `src/escena/elenco.js` adapta las animaciones a cada esqueleto (decisión 0006). Origen y licencias en `CREDITOS.md`.
+- No activar `halfRes` en N8AO: su render target de varias texturas falla con three.js 0.187.
+- El campus sale de `modelado/campus_univalle_laura.blend`; las convenciones de nombres están en `public/models/LEEME.md`.
 - Vite 6, Vitest con jsdom, ESLint y Prettier. Sin backend (RT-05).
 
 ## Skills del proyecto
@@ -26,6 +29,8 @@ Al usarlas:
 
 ## Dependencias descartadas
 
+- Mixamo: su licencia no permite redistribuir los modelos ni las animaciones en un repositorio público.
+- Quaternius, salvo los paquetes Ultimate Modular de 2022 (CC0): su licencia actual no permite redistribuir los modelos sueltos.
 - `@react-three/viverse` y `@pmndrs/viverse`: dependen del SDK de VIVERSE, cuya licencia solo permite usarlo en aplicaciones que se conectan a VIVERSE y prohíbe redistribuirlo.
 
 ## Convenciones

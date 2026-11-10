@@ -3,10 +3,11 @@
 Prototipo de un serious game que se ejecuta en el navegador y apoya el aprendizaje de la integración básica de **HTML, CSS y JavaScript**, y la revisión crítica del código que sugieren las herramientas de IA generativa. El estudiante recorre un campus 3D inspirado en la plazoleta de la Facultad de Ingeniería y construye, edificio por edificio, la cartelera web de la Facultad.
 
 Trabajo de grado de **Laura Isabel Salazar Bueno**, Escuela de Ingeniería de Sistemas y Computación, Universidad del Valle.
-Director: Fabian Stiven Valencia Córdoba. Codirectores: Paola Johanna Rodríguez Carrillo y Javier Mauricio Reyes Vera.
+Directores: Paola Johanna Rodríguez Carrillo, Javier Mauricio Reyes Vera y Fabian Stiven Valencia Córdoba.
 
-- **Prototipo publicado:** _enlace de GitHub Pages cuando se active el despliegue_
+- **Prototipo publicado:** https://aura1509.github.io/serious-game-frontend/
 - **Estado:** en desarrollo (objetivo específico 2)
+- **Tecnologías:** React 19, React Three Fiber 9 con drei 10 y postprocessing, three.js 0.187 sobre WebGL y Vite 6 (decisiones 0004, 0005 y 0006)
 
 ## Requisitos
 
@@ -40,17 +41,21 @@ npm run dev        # servidor local con recarga automática
 │   ├── esquema-reto.json        Estructura que debe tener cada reto
 │   └── retos/<edificio>/<ID>.json   Banco de retos (teoría, base, criterios, variantes)
 ├── docs/                        Documentación técnica y decisiones de diseño
-├── public/models/               Modelado del campus en .glb (Git LFS)
+├── modelado/                    Archivo fuente del campus en Blender (Git LFS)
+├── public/models/               Campus exportado en .glb (Git LFS), personas y convenciones de nombres
+├── public/texturas/             Texturas CC0 del campus (ver CREDITOS.md)
 ├── src/
-│   ├── escena/                  Escena 3D con three.js (campus, cámara, animaciones)
-│   ├── retos/                   Banco de retos y controlador
+│   ├── escena/                  Escena con React Three Fiber: campus, ambiente, paisaje, personas, robot, jugador y cámara
+│   ├── asistente/               Guion y cola de mensajes del robot asistente
+│   ├── retos/                   Banco de retos y controlador del reto
 │   ├── ejecucion/               Ejecución aislada del código del estudiante
 │   ├── evaluador/               Evaluador basado en plantillas
 │   ├── retroalimentacion/       Mensajes y pistas
 │   ├── progreso/                Guardado local y código de continuación
-│   ├── ui/                      Panel del reto y editor
+│   ├── ui/                      Inicio, HUD, ayuda y panel del reto
 │   ├── estilos/                 Estilos de la interfaz 2D
-│   └── main.js                  Punto de entrada
+│   ├── App.jsx                  Modos del juego: inicio, exploración y reto
+│   └── main.jsx                 Punto de entrada
 ├── tests/                       Pruebas automáticas (Vitest)
 └── .github/                     Integración continua, despliegue y plantillas
 ```
@@ -65,6 +70,7 @@ Los módulos siguen la arquitectura del documento de grado (Anexo B, Figura B3) 
 - [Decisiones de diseño](docs/decisiones/)
 - [Manual breve de usuario](docs/manual-usuario.md) (borrador)
 - [Cómo contribuir](CONTRIBUTING.md) y [registro de cambios](CHANGELOG.md)
+- [Créditos de texturas y personajes](CREDITOS.md)
 
 ## Privacidad
 
